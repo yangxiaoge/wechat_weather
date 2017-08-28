@@ -1,0 +1,65 @@
+.bg {
+  width: 100%;
+  height: 700rpx;
+}
+
+.container {
+  /**绝对布局**/
+  position: absolute;
+  left: 0rpx;
+  top: 0rpx;
+  width: 100%;
+  height: 700rpx;
+  padding: 0rpx;
+  margin: 0rpx;
+  /**块布局，否则这里默认用的 app.wxss 的 container 样式**/
+  display: block;
+}
+
+.weatherDetail {
+  position: absolute;
+  width: 100%;
+  /**距离父布局底部**/
+  bottom: 40rpx;
+  /**横向**/
+  flex-direction: row;
+  /**均分**/
+  justify-content: space-around;
+  /**flex 布局**/
+  display: flex;
+}
+
+.currentWeather {
+  padding: 50rpx;
+}
+
+.temp {
+  font-size: 160rpx;
+}
+
+.f50{
+  font-size: 50rpx;
+}
+
+.horizon {
+  display: flex;
+}
+
+.forcast {
+  padding: 30rpx;
+  margin: 16rpx;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid gainsboro;
+  justify-content: space-around;
+}
+
+.img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+
+.suggestion_txt{
+  margin-top: 20rpx;
+}

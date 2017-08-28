@@ -1,0 +1,34 @@
+/**app.wxss**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+/**定义全局的白色**/
+
+.w {
+  color: white;
+}
+
+.center {
+  text-align: center;
+  margin: auto 0;
+}
+
+/**粗体**/
+
+.b {
+  font-weight: bold;
+}
+
+/**白线**/
+
+.wline {
+  border: 1rpx solid white;
+}
