@@ -1,7 +1,6 @@
 <!--index.wxml-->
 <!--天气背景 bg 对应 wxss下的样式-->
 <image src="../../assets/day1.jpg" class="bg"></image>
-
 <view class="container">
   <!--城市天气信息-->
   <view class="currentWeather">
