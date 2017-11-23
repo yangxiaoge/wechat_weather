@@ -16,13 +16,19 @@ Page({
 
   // 通过微信，获取经纬度
   getLocation: function () {
+
+    //显示加载动画
+    wx.showLoading({
+      title: '加载中',
+    })
+
     var that = this;
     wx.getLocation({
       type: "wgs84",
       success: function (res) {
         var latitude = res.latitude //纬度
         var longitude = res.longitude //经度
-        console.log("lat:" + latitude + "lon:" + longitude)
+        console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
 
         //调用天气查询
         that.getCity(latitude, longitude);
@@ -86,34 +92,45 @@ Page({
         console.log(JSON.stringify(res))
 
         //获取需要的数据
-        var tmp = res.data.HeWeather5[0].now.tmp;
-        var txt = res.data.HeWeather5[0].now.cond.txt;
-        var code = res.data.HeWeather5[0].now.cond.code;
+        var pm25 = res.data.HeWeather5[0].aqi.city.pm25; //PM2.5
+        var tmp = res.data.HeWeather5[0].now.tmp; // 当前温度
+        var txt = res.data.HeWeather5[0].now.cond.txt; //天气情况
+        // var code = res.data.HeWeather5[0].now.cond.code;
         var suggestion_brf = res.data.HeWeather5[0].suggestion.air.brf; //舒适度指数简介
         var suggestion_txt = res.data.HeWeather5[0].suggestion.air.txt; //舒适度详细描述
-        var dir = res.data.HeWeather5[0].now.wind.dir;
-        var sc = res.data.HeWeather5[0].now.wind.sc;
-        var hum = res.data.HeWeather5[0].now.hum;
-        var fl = res.data.HeWeather5[0].now.fl;
+        var dir = res.data.HeWeather5[0].now.wind.dir; //风向
+        var sc = res.data.HeWeather5[0].now.wind.sc; //风力等级
+        var hum = res.data.HeWeather5[0].now.hum; //相对湿度
+        // var fl = res.data.HeWeather5[0].now.fl; //体感温度
+        var pres = res.data.HeWeather5[0].now.pres; //气压
         var daily_forecast = res.data.HeWeather5[0].daily_forecast;
-
+        var updateTime = res.data.HeWeather5[0].basic.update.loc; //更新时间
+        var hour = updateTime.substring(11,13); //更新时间截取小时
         that.setData({
+          pm25: pm25,
           tmp: tmp,
           txt: txt,
-          code: code,
+          // code: code,
           suggestion_brf: suggestion_brf,
           suggestion_txt: suggestion_txt,
           dir: dir,
           sc: sc,
           hum: hum,
-          fl: fl,
-          daily_forecast: daily_forecast
+          // fl: fl,
+          pres: pres,
+          daily_forecast: daily_forecast,
+          updateTime: hour
         })
 
       },
       fail: function (res) { },
       complete: function (res) { },
     })
+
+    //隐藏加载动画
+    setTimeout(function () {
+      wx.hideLoading()
+    }, 2000)
   },
 
   // 转发分享小程序
@@ -140,5 +157,17 @@ Page({
         })
       }
     }
+  },
+
+  //下拉刷新数据
+  onPullDownRefresh: function () {
+
+    console.log('下拉刷新')
+    var that = this
+
+    that.getLocation();
+
+    //停止刷新
+    wx.stopPullDownRefresh();
   }
 })

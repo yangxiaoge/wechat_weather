@@ -9,8 +9,8 @@
     <view class="city w">{{city}} {{district}}</view>
     <view class="street w">{{street}}</view>
     <view class="temp w">{{tmp}}°</view>
-    <view class="weather w">{{txt}} | 空气 {{suggestion_brf}}</view>
-     <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
+    <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}}</view>
+    <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
   </view>
 
   <!--天气详情-->
@@ -28,13 +28,13 @@
     </view>
     <view class="wline"></view>
     <view class="center">
-      <view class="w">体感温度</view>
-      <view class="w b f50">{{fl}}°</view>
+      <view class="w">PM 2.5</view>
+      <view class="w b f50">{{pm25}}</view>
     </view>
   </view>
 </view>
 
-<view wx:for="{{daily_forecast}}" wx:for-index="i" wx:for-item="item">
+<view wx:for="{{daily_forecast}}" wx:key="this" wx:for-index="i" wx:for-item="item">
   <view class="horizon forcast">
 
     <!-- 日期显示判断 -->
@@ -43,7 +43,10 @@
 
     <view class="horizon">
       <image class="img" src="../../assets/icons/{{item.cond.code_d}}.png"></image>
-      <view class="center">{{item.cond.txt_d}} | {{suggestion_brf}}</view>
+      <!-- 白天  -->
+      <view class="center" wx:if="{{hour<18}}">{{item.cond.txt_d}}</view>
+      <!-- 晚上  -->
+      <view class="center" wx:else>{{item.cond.txt_n}}</view>
     </view>
     <view class="center">{{item.tmp.min}}°/ {{item.tmp.max}}°</view>
   </view>
