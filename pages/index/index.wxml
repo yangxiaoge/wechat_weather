@@ -6,8 +6,13 @@
 <view class="container">
   <!--城市天气信息-->
   <view class="currentWeather">
-    <view class="city w">{{city}} {{district}}</view>
-    <view class="street w">{{street}}</view>
+
+    <view class="city w" bindtap="chooseLocation">
+      <image src="../../assets/定位.png" class="imgLocation"></image>
+      {{city}} {{district}}
+      <view class="city w">{{street}}</view>
+    </view>
+
     <view class="temp w">{{tmp}}°</view>
     <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}}</view>
     <view class="weather w suggestion_txt">{{suggestion_txt}}</view>

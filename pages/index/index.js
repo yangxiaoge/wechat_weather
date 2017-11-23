@@ -14,24 +14,46 @@ Page({
     that.getLocation();
   },
 
-  // 通过微信，获取经纬度
+  //方法1： 通过微信，获取当前经纬度
   getLocation: function () {
-
-    //显示加载动画
-    wx.showLoading({
-      title: '加载中',
-    })
-
     var that = this;
+
     wx.getLocation({
       type: "wgs84",
       success: function (res) {
         var latitude = res.latitude //纬度
         var longitude = res.longitude //经度
         console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
+        
+        //显示加载动画
+        wx.showLoading({
+          title: '加载中',
+        })
 
         //调用天气查询
         that.getCity(latitude, longitude);
+      },
+    })
+  },
+
+  //方法2： 手动打开地图选择位置
+  chooseLocation: function () {
+    var that = this;
+
+    wx.chooseLocation({
+      success: function (res) {
+        var latitude = res.latitude //纬度
+        var longitude = res.longitude //经度
+        console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
+
+        //显示加载动画
+        wx.showLoading({
+          title: '加载中',
+        })
+
+        //调用天气查询
+        that.getCity(latitude, longitude);
+        
       },
     })
   },
@@ -105,7 +127,7 @@ Page({
         var pres = res.data.HeWeather5[0].now.pres; //气压
         var daily_forecast = res.data.HeWeather5[0].daily_forecast;
         var updateTime = res.data.HeWeather5[0].basic.update.loc; //更新时间
-        var hour = updateTime.substring(11,13); //更新时间截取小时
+        var hour = updateTime.substring(11, 13); //更新时间截取小时
         that.setData({
           pm25: pm25,
           tmp: tmp,
