@@ -114,5 +114,31 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
+  },
+
+  // 转发分享小程序
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: 'Zz 天气预报',
+      path: '/pages/index/index',
+      success: function (res) {
+        wx.showToast({
+          title: '转发成功',
+          icon: 'success',
+          duration: 2000
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '转发失败',
+          icon: 'success',
+          duration: 2000
+        })
+      }
+    }
   }
 })
