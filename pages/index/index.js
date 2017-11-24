@@ -16,11 +16,6 @@ Page({
 
   //方法1： 通过微信，获取当前经纬度
   getLocation: function () {
-    //显示加载动画
-    wx.showLoading({
-      title: '加载中',
-    })
-
     var that = this;
 
     wx.getLocation({
@@ -30,19 +25,25 @@ Page({
         var longitude = res.longitude //经度
         console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
 
+        //显示加载动画
+        wx.showLoading({
+          title: '加载中',
+        })
+
         //调用天气查询
         that.getCity(latitude, longitude);
       },
+      fail: function (e) {
+        console.log("获取位置失败")
+      },
+      complete: function () {
+        console.log("获取位置完成")
+      }
     })
   },
 
   //方法2： 手动打开地图选择位置
   chooseLocation: function () {
-    //显示加载动画
-    wx.showLoading({
-      title: '加载中',
-    })
-
     var that = this;
 
     wx.chooseLocation({
@@ -51,10 +52,15 @@ Page({
         var longitude = res.longitude //经度
         console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
 
+        //显示加载动画
+        wx.showLoading({
+          title: '加载中',
+        })
+
         //调用天气查询
         that.getCity(latitude, longitude);
 
-      },
+      }
     })
   },
 
