@@ -5,6 +5,7 @@
     <block wx:else>
       <image bindtap="viewLog" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <text class="userinfo-nickname" style="margin-top:20rpx;">{{userInfo.city}}</text>
     </block>
   </view>
   <view class="usermotto">
