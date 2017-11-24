@@ -2,42 +2,44 @@
 <!--天气背景 bg 对应 wxss下的样式-->
 <!-- <image src="../../assets/day1.jpg" class="bg"></image> -->
 <!-- 背景图随机更换 -->
-<image src="https://api.i-meto.com/bing" class="bg"></image>
-<view class="container">
-  <!--城市天气信息-->
-  <view class="currentWeather">
+<image src="https://api.i-meto.com/bing" class="bg">
+  <view class="container">
+    <!--城市天气信息-->
+    <view class="currentWeather">
 
-    <view class="city w" bindtap="chooseLocation">
-      <image src="../../assets/map.png" class="imgLocation"></image>
-      {{city}} {{district}} {{street}}
-      <!-- <view class="city w">{{street}}</view> -->
+      <view class="city w" bindtap="chooseLocation">
+        <image src="../../assets/map.png" class="imgLocation"></image>
+        {{city}} {{district}} {{street}}
+        <!-- <view class="city w">{{street}}</view> -->
+      </view>
+
+      <view class="temp w">{{tmp}}°</view>
+      <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}} hPa</view>
+      <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
     </view>
 
-    <view class="temp w">{{tmp}}°</view>
-    <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}} hPa</view>
-    <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
+    <!--天气详情-->
+    <view class="weatherDetail">
+      <view class="center">
+        <view class="w">{{dir}}</view>
+
+        <view wx:if="{{sc == '微风'}}" class="w b f50">微风</view>
+        <view wx:else class="w b f50">{{sc}}级</view>
+      </view>
+      <view class="wline"></view>
+      <view class="center">
+        <view class="w">相对湿度</view>
+        <view class="w b f50">{{hum}}%</view>
+      </view>
+      <view class="wline"></view>
+      <view class="center">
+        <view class="w">PM 2.5</view>
+        <view class="w b f50">{{pm25}}</view>
+      </view>
+    </view>
   </view>
+</image>
 
-  <!--天气详情-->
-  <view class="weatherDetail">
-    <view class="center">
-      <view class="w">{{dir}}</view>
-
-      <view wx:if="{{sc == '微风'}}" class="w b f50">微风</view>
-      <view wx:else class="w b f50">{{sc}}级</view>
-    </view>
-    <view class="wline"></view>
-    <view class="center">
-      <view class="w">相对湿度</view>
-      <view class="w b f50">{{hum}}%</view>
-    </view>
-    <view class="wline"></view>
-    <view class="center">
-      <view class="w">PM 2.5</view>
-      <view class="w b f50">{{pm25}}</view>
-    </view>
-  </view>
-</view>
 
 <view wx:for="{{daily_forecast}}" wx:key="this" wx:for-index="i" wx:for-item="item">
   <view class="horizon forcast" style="font-size: 33rpx;">
