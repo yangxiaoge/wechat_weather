@@ -9,12 +9,12 @@
 
     <view class="city w" bindtap="chooseLocation">
       <image src="../../assets/定位.png" class="imgLocation"></image>
-      {{city}} {{district}}
-      <view class="city w">{{street}}</view>
+      {{city}} {{district}} {{street}}
+      <!-- <view class="city w">{{street}}</view> -->
     </view>
 
     <view class="temp w">{{tmp}}°</view>
-    <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}}</view>
+    <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}} hPa</view>
     <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
   </view>
 
@@ -40,19 +40,17 @@
 </view>
 
 <view wx:for="{{daily_forecast}}" wx:key="this" wx:for-index="i" wx:for-item="item">
-  <view class="horizon forcast">
-
+  <view class="horizon forcast" style="font-size: 33rpx;">
     <!-- 日期显示判断 -->
     <view class="center" wx:if="{{i>=3}}">{{item.date}}</view>
     <view class="center" wx:else>{{day[i]}}</view>
 
     <view class="horizon">
       <image class="img" src="../../assets/icons/{{item.cond.code_d}}.png"></image>
-      <!-- 白天  -->
-      <view class="center" wx:if="{{hour<18}}">{{item.cond.txt_d}}</view>
-      <!-- 晚上  -->
-      <view class="center" wx:else>{{item.cond.txt_n}}</view>
+      <view class="center">{{item.cond.txt_d}}转{{item.cond.txt_n}}</view>
     </view>
+
     <view class="center">{{item.tmp.min}}°/ {{item.tmp.max}}°</view>
   </view>
+
 </view>
