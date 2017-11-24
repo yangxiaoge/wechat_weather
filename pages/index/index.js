@@ -172,11 +172,12 @@ Page({
         })
       },
       fail: function (res) {
-        wx.showToast({
-          title: '转发失败',
-          icon: 'success',
-          duration: 2000
-        })
+        // 转发失败取消提示
+        // wx.showToast({
+        //   title: '转发失败',
+        //   icon: 'loading',
+        //   duration: 2000
+        // })
       }
     }
   },
