@@ -8,7 +8,7 @@
   <view class="currentWeather">
 
     <view class="city w" bindtap="chooseLocation">
-      <image src="../../assets/定位.png" class="imgLocation"></image>
+      <image src="../../assets/map.png" class="imgLocation"></image>
       {{city}} {{district}} {{street}}
       <!-- <view class="city w">{{street}}</view> -->
     </view>
