@@ -14,15 +14,14 @@
       </view>
 
       <view class="temp w">{{tmp}}°</view>
-      <view class="weather w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}} hPa</view>
-      <view class="weather w suggestion_txt">{{suggestion_txt}}</view>
+      <view class="w">{{txt}} | 空气 {{suggestion_brf}} | 气压 {{pres}} hPa</view>
+      <view class="w suggestion_txt">{{suggestion_txt}}</view>
     </view>
 
     <!--天气详情-->
     <view class="weatherDetail">
       <view class="center">
         <view class="w">{{dir}}</view>
-
         <view wx:if="{{sc == '微风'}}" class="w b f50">微风</view>
         <view wx:else class="w b f50">{{sc}}级</view>
       </view>
@@ -36,20 +35,28 @@
         <view class="w">PM 2.5</view>
         <view class="w b f50">{{pm25}}</view>
       </view>
+      <view class="wline"></view>
+      <view class="center">
+        <view class="w">紫外线</view>
+        <view class="w b f50">{{suggestion_uv}}</view>
+      </view>
     </view>
   </view>
 </image>
 
-
 <view wx:for="{{daily_forecast}}" wx:key="this" wx:for-index="i" wx:for-item="item">
-  <view class="horizon forcast" style="font-size: 33rpx;">
+  <view class="horizon forcast" style="font-size: 31rpx; ">
     <!-- 日期显示判断 -->
     <view class="center" wx:if="{{i>=3}}">{{item.date}}</view>
     <view class="center" wx:else>{{day[i]}}</view>
 
     <view class="horizon">
-      <image class="img" src="../../assets/icons/{{item.cond.code_d}}.png"></image>
-      <view class="center">{{item.cond.txt_d}}转{{item.cond.txt_n}}</view>
+      <!-- 图片区分白天黑夜 -->
+      <image class="img" src="../../assets/icons/{{item.cond.code_d}}.png" wx:if="{{updateTime < 18}}"></image>
+      <image class="img" src="../../assets/icons/{{item.cond.code_n}}.png" wx:else></image>
+      <!-- 天气情况 -->
+      <view class="center" wx:if="{{item.cond.txt_d == item.cond.txt_n}}">{{item.cond.txt_d}}</view>
+      <view class="center" wx:else>{{item.cond.txt_d}}转{{item.cond.txt_n}}</view>
     </view>
 
     <view class="center">{{item.tmp.min}}°/ {{item.tmp.max}}°</view>

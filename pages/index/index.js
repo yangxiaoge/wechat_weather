@@ -126,6 +126,7 @@ Page({
         // var code = res.data.HeWeather5[0].now.cond.code;
         var suggestion_brf = res.data.HeWeather5[0].suggestion.air.brf; //舒适度指数简介
         var suggestion_txt = res.data.HeWeather5[0].suggestion.air.txt; //舒适度详细描述
+        var suggestion_uv = res.data.HeWeather5[0].suggestion.uv.brf; //紫外线强度
         var dir = res.data.HeWeather5[0].now.wind.dir; //风向
         var sc = res.data.HeWeather5[0].now.wind.sc; //风力等级
         var hum = res.data.HeWeather5[0].now.hum; //相对湿度
@@ -134,6 +135,7 @@ Page({
         var daily_forecast = res.data.HeWeather5[0].daily_forecast;
         var updateTime = res.data.HeWeather5[0].basic.update.loc; //更新时间
         var hour = updateTime.substring(11, 13); //更新时间截取小时
+        // console.log("时间截取小时:" + hour);
         that.setData({
           pm25: pm25,
           tmp: tmp,
@@ -141,6 +143,7 @@ Page({
           // code: code,
           suggestion_brf: suggestion_brf,
           suggestion_txt: suggestion_txt,
+          suggestion_uv: suggestion_uv,
           dir: dir,
           sc: sc,
           hum: hum,
