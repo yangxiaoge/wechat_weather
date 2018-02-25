@@ -24,7 +24,6 @@ Page({
         var latitude = res.latitude //纬度
         var longitude = res.longitude //经度
         console.log("纬度经度 lat:" + latitude + " lon:" + longitude)
-
         //显示加载动画
         wx.showLoading({
           title: '加载中',

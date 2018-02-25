@@ -19,6 +19,6 @@
 
 .usermotto {
   color: #aaa;
-  margin-top: 160px;
+  margin-top: 150px;
   text-align: center;
 }

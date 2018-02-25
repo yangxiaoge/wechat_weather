@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hi\n这是 ZzWeather 关于页面\n更多内容敬请期待！^_^',
+    motto: 'Hi\n这是 ZzWeather 关于页面\n更多内容敬请期待！^_^\n\nhttps://github.com/yangxiaoge/wechat_weather',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')

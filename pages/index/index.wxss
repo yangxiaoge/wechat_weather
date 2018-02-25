@@ -73,3 +73,9 @@
 .suggestion_txt{
   margin-top: 20rpx;
 }
+
+.item_temp {
+  text-align: center;
+  margin: auto 0;
+  color: darkslategray;
+}
