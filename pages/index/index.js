@@ -80,7 +80,7 @@ Page({
       url: url,
       data: params,
       success: function (res) {
-        console.log(JSON.stringify(res))
+        console.log(JSON.stringify(res));
         //前端的 json 解析简直方便！！
         var city = res.data.result.addressComponent.city;
         var district = res.data.result.addressComponent.district;
@@ -104,6 +104,7 @@ Page({
   //通过和风天气，获取城市天气
   //接口详情见：https://www.heweather.com/documents/api/v5/weather
   getWeather: function (city) {
+    console.log(city);
     var that = this;
     var url = "https://free-api.heweather.com/v5/weather";
     var params = {
@@ -116,10 +117,10 @@ Page({
       url: url,
       data: params,
       success: function (res) {
-        console.log(JSON.stringify(res))
+        console.log(JSON.stringify(res));
 
         //获取需要的数据
-        var pm25 = res.data.HeWeather5[0].aqi.city.pm25; //PM2.5
+        var pm25 = res.data.HeWeather5[0].basic.city; //PM2.5
         var tmp = res.data.HeWeather5[0].now.tmp; // 当前温度
         var txt = res.data.HeWeather5[0].now.cond.txt; //天气情况
         // var code = res.data.HeWeather5[0].now.cond.code;
