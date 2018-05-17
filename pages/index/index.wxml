@@ -32,8 +32,8 @@
       </view>
       <view class="wline"></view>
       <view class="center">
-        <view class="w">城市</view>
-        <view class="w b f50">{{pm25}}</view>
+        <view class="w">区域</view>
+        <view class="w b f50">{{district}}</view>
       </view>
       <view class="wline"></view>
       <view class="center">
