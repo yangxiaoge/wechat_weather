@@ -120,17 +120,17 @@ Page({
         console.log(JSON.stringify(res));
 
         //获取需要的数据
-        var pm25 = res.data.HeWeather5[0].basic.city; //PM2.5
+        var pm25 = res.data.HeWeather5[0].aqi.city.pm25; //PM2.5
         var tmp = res.data.HeWeather5[0].now.tmp; // 当前温度
         var txt = res.data.HeWeather5[0].now.cond.txt; //天气情况
         // var code = res.data.HeWeather5[0].now.cond.code;
-        var suggestion_brf = res.data.HeWeather5[0].suggestion.air.brf; //舒适度指数简介
-        var suggestion_txt = res.data.HeWeather5[0].suggestion.air.txt; //舒适度详细描述
+        var suggestion_brf = res.data.HeWeather5[0].suggestion.air.brf; //空气指数
+        var suggestion_txt = res.data.HeWeather5[0].suggestion.air.txt; //空气质量详细描述
         var suggestion_uv = res.data.HeWeather5[0].suggestion.uv.brf; //紫外线强度
         var dir = res.data.HeWeather5[0].now.wind.dir; //风向
         var sc = res.data.HeWeather5[0].now.wind.sc; //风力等级
         var hum = res.data.HeWeather5[0].now.hum; //相对湿度
-        // var fl = res.data.HeWeather5[0].now.fl; //体感温度
+        var fl = res.data.HeWeather5[0].now.fl; //体感温度
         var pres = res.data.HeWeather5[0].now.pres; //气压
         var daily_forecast = res.data.HeWeather5[0].daily_forecast;
         var updateTime = res.data.HeWeather5[0].basic.update.loc; //更新时间
@@ -147,7 +147,7 @@ Page({
           dir: dir,
           sc: sc,
           hum: hum,
-          // fl: fl,
+          fl: fl,
           pres: pres,
           daily_forecast: daily_forecast,
           updateTime: hour
