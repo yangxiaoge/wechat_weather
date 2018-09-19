@@ -1,11 +1,11 @@
 <!--pages/about/about.wxml-->
-<view style="padding:30rpx">
-  <text style="color:#FF0000">{{aboutApp}}</text>
+
+<view style="margin-top:20rpx;margin-bottom:50rpx">
+  <text style="color:#FF0000;text-align: left;">{{aboutApp}}</text>
 </view>
 
 <view wx:for="{{hottopic_datas}}" wx:key="this" wx:for-index="i" wx:for-item="item">
   <view class="border">
-    <!-- 日期显示判断 -->
     <view bindtap="showSummary" style="color:#333;font-size: 35rpx;padding:10rpx;">{{item.title}}</view>
     <view style="border: 1rpx dashed #aaa;margin-left:10rpx;margin-right:10rpx;"></view>
     <view style="color:#737373;font-size: 30rpx;padding:10rpx;">{{item.summary}}</view>

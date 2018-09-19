@@ -5,7 +5,7 @@ var visiable = false
 Page({
 
   data:{
-    aboutApp: 'Hi\n这是 ZzWeather 关于页面 \n 更多内容敬请期待！^_^\n\nhttps://github.com/yangxiaoge/wechat_weather\n\n下面是ReadHub热门话题',
+    aboutApp: 'Hi \n 这是 ZzWeather 关于页面^_^\n源码地址: github.com/yangxiaoge/wechat_weather \n\n下面是ReadHub热门科技资讯',
   },
 
   //跳转log 页面
@@ -16,7 +16,7 @@ Page({
   },
 
   onLoad: function() {
-    // 获取 readhub 热门话题
+    // 获取 readhub 热门话题（科技资讯）
     this.getHotTopics()
   },
 
